@@ -1,9 +1,9 @@
-Building Dogecoin
+Building Amigacoin
 
-See doc/readme-qt.rst for instructions on building Dogecoin-Qt,
+See doc/readme-qt.rst for instructions on building Amigacoin-Qt,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of Dogecoin.
+implementation of Amigacoin.
 
-See doc/build-*.txt for instructions on building dogecoind,
+See doc/build-*.txt for instructions on building amigacoind,
 the intended-for-services, no-graphical-interface, reference
-implementation of Dogecoin.
+implementation of Amigacoin.

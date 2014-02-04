@@ -6,10 +6,10 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>dogecoin</string>
+			<string>amigacoin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>dogecoin</string>
+				<string>amigacoin</string>
 			</array>
 		</dict>
 	</array>
@@ -20,18 +20,18 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>CFBundleIconFile</key>
-	<string>Dogecoin.icns</string>
+	<string>Amigacoin.icns</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© Dogecoin</string>
+	<string>© Amigacoin</string>
 	<key>CFBundleSignature</key>
-	<string>DOGE</string>
+	<string>AMIGA</string>
 	<key>CFBundleExecutable</key>
-	<string>Dogecoin-Qt</string>
+	<string>Amigacoin-Qt</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.dogecoin.wallet-qt</string>
+	<string>com.amigacoin.wallet-qt</string>
 	<key>CFBundleName</key>
-	<string>Dogecoin-Qt</string>
+	<string>Amigacoin-Qt</string>
 </dict>
 </plist>

@@ -25,7 +25,7 @@
 using namespace boost;
 
 const int BITCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString BITCOIN_IPC_PREFIX("dogecoin:");
+const QString BITCOIN_IPC_PREFIX("amigacoin:");
 
 //
 // Create a name that is unique for:
@@ -106,7 +106,7 @@ PaymentServer::PaymentServer(QApplication* parent) : QObject(parent), saveURIs(t
     uriServer = new QLocalServer(this);
 
     if (!uriServer->listen(name))
-        qDebug() << tr("Cannot start dogecoin: click-to-pay handler");
+        qDebug() << tr("Cannot start amigacoin: click-to-pay handler");
     else
         connect(uriServer, SIGNAL(newConnection()), this, SLOT(handleURIConnection()));
 }
@@ -121,8 +121,8 @@ bool PaymentServer::eventFilter(QObject *object, QEvent *event)
         {
             // WTF Qt?
             QString url = fileEvent->url().toString();
-            if ( url.startsWith( "file:dogecoin:/D" ) ) {
-                url.replace( "file:dogecoin:/D", "dogecoin://D" );
+            if ( url.startsWith( "file:amigacoin:/D" ) ) {
+                url.replace( "file:amigacoin:/D", "amigacoin://D" );
             }
 
             if (saveURIs) // Before main window is ready:

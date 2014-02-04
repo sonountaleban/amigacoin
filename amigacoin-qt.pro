@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = dogecoin-qt
-macx:TARGET = "Dogecoin-Qt"
+TARGET = amigacoin-qt
+macx:TARGET = "Amigacoin-Qt"
 VERSION = 1.5.0
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
@@ -139,7 +139,7 @@ macx: {
         $$BOOST_LIB_PATH/libboost_thread-mt.a \
         $$BOOST_LIB_PATH/libboost_chrono-mt.a
     DEFINES += MAC_OSX
-    ICON = src/mac/artwork/Dogecoin.icns
+    ICON = src/mac/artwork/Amigacoin.icns
     QMAKE_INFO_PLIST=src/mac/Info.plist
     # osx 10.9 has changed the stdlib default to libc++. To prevent some link error, you may need to use libstdc++
     QMAKE_CXXFLAGS += -stdlib=libstdc++
@@ -366,7 +366,7 @@ SOURCES += src/qt/test/test_main.cpp \
 HEADERS += src/qt/test/uritests.h
 DEPENDPATH += src/qt/test
 QT += testlib
-TARGET = dogecoin-qt_test
+TARGET = amigacoin-qt_test
 DEFINES += BITCOIN_QT_TEST
   macx: CONFIG -= app_bundle
 }

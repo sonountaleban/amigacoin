@@ -1,8 +1,10 @@
 # Amigacoin Integration/Staging Tree
 http://www.amigacoin.org/
 
+Support Amiga platform, please!
+
 ## What is Amigacoin?
-Amigacoin is a clone of Dogecoin (Litecoin-derived cryptocurrency).
+Amigacoin is a clone of Dogecoin (another Litecoin-derived cryptocurrency).
 
 ## License
 Amigacoin is released under the terms of the MIT license. See [COPYING](COPYING)
