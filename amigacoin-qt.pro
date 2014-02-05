@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = amigacoin-qt
 macx:TARGET = "Amigacoin-Qt"
-VERSION = 1.5.0
+VERSION = 1.0.0
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

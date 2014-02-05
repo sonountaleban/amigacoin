@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 1.5.0
+!define VERSION 1.0.0
 !define COMPANY "Amigacoin project"
 !define URL http://www.amigacoin.org/
 
@@ -45,13 +45,13 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile amigacoin-1.5.0-win32-setup.exe
+OutFile amigacoin-1.0.0-win32-setup.exe
 InstallDir $PROGRAMFILES\Amigacoin
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 1.5.0
+VIProductVersion 1.0.0
 VIAddVersionKey ProductName Amigacoin
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
