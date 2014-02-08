@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x017fce5f1c9898ad0f930ede83c93a5b924db8bcc913b00b5f02de5d6a144e98");
+uint256 hashGenesisBlock("0xb291ae994f9fd8e39d9cfad7f320e5d203d4160453632ff95c59b168183d35f1");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Amigacoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2803,9 +2803,9 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1391821644;
+        block.nTime    = 1391856774;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 0;
+        block.nNonce   = 2402266;
 
         if (fTestNet)
         {
