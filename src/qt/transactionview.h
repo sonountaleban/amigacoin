@@ -67,6 +67,7 @@ private slots:
     void copyLabel();
     void copyAmount();
     void copyTxID();
+    void viewOnAmigachain();
 
 signals:
     void doubleClicked(const QModelIndex&);

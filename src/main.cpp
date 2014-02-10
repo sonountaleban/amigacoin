@@ -1096,7 +1096,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
     long seed = hex2long(cseed);
     int rand = generateMTRandom(seed, 900);
 
-    nSubsidy += rand;
+    nSubsidy += rand * COIN;
 
     return nSubsidy + nFees;
 }

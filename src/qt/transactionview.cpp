@@ -25,6 +25,8 @@
 #include <QMenu>
 #include <QLabel>
 #include <QDateTimeEdit>
+#include <QDesktopServices>
+#include <QUrl>
 
 TransactionView::TransactionView(QWidget *parent) :
     QWidget(parent), model(0), transactionProxyModel(0),
@@ -126,14 +128,18 @@ TransactionView::TransactionView(QWidget *parent) :
     QAction *copyTxIDAction = new QAction(tr("Copy transaction ID"), this);
     QAction *editLabelAction = new QAction(tr("Edit label"), this);
     QAction *showDetailsAction = new QAction(tr("Show transaction details"), this);
+    QAction *viewOnAmigachain = new QAction(tr("Show transaction on Amigachain"), this);
 
     contextMenu = new QMenu();
     contextMenu->addAction(copyAddressAction);
     contextMenu->addAction(copyLabelAction);
     contextMenu->addAction(copyAmountAction);
     contextMenu->addAction(copyTxIDAction);
+    contextMenu->addSeparator();
     contextMenu->addAction(editLabelAction);
     contextMenu->addAction(showDetailsAction);
+    contextMenu->addSeparator();
+    contextMenu->addAction(viewOnAmigachain);
 
     // Connect actions
     connect(dateWidget, SIGNAL(activated(int)), this, SLOT(chooseDate(int)));
@@ -150,6 +156,7 @@ TransactionView::TransactionView(QWidget *parent) :
     connect(copyTxIDAction, SIGNAL(triggered()), this, SLOT(copyTxID()));
     connect(editLabelAction, SIGNAL(triggered()), this, SLOT(editLabel()));
     connect(showDetailsAction, SIGNAL(triggered()), this, SLOT(showDetails()));
+    connect(viewOnAmigachain, SIGNAL(triggered()), this, SLOT(viewOnAmigachain()));
 }
 
 void TransactionView::setModel(WalletModel *model)
@@ -376,6 +383,18 @@ void TransactionView::showDetails()
     {
         TransactionDescDialog dlg(selection.at(0));
         dlg.exec();
+    }
+}
+
+void TransactionView::viewOnAmigachain()
+{
+    QModelIndexList selection = transactionView->selectionModel()->selectedRows();
+    if(!selection.isEmpty())
+    {
+        QString format("http://amigachain.info/tx/");
+        format += selection.at(0).data(TransactionTableModel::TxIDRole).toString();
+
+        QDesktopServices::openUrl(QUrl(format));
     }
 }
 
