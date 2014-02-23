@@ -2,7 +2,12 @@ TEMPLATE = app
 TARGET = amigacoin-qt
 macx:TARGET = "Amigacoin-Qt"
 VERSION = 1.0.0
-INCLUDEPATH += src src/json src/qt
+win32 {
+    INCLUDEPATH += src src/json src/qt src/boost_1_55_0 src/openssl-1.0.1f/include src/db-5.1.29.NC/build_unix
+}
+!win32 {
+    INCLUDEPATH += src src/json src/qt
+}
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
@@ -24,6 +29,10 @@ CONFIG += exceptions
 OBJECTS_DIR = build
 MOC_DIR = build
 UI_DIR = build
+
+macx {
+    INCLUDEPATH += /opt/local/include/db51
+}
 
 # use: qmake "RELEASE=1"
 contains(RELEASE, 1) {
@@ -132,12 +141,13 @@ macx: {
     HEADERS += src/qt/macdockiconhandler.h src/qt/macnotificationhandler.h
     OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm src/qt/macnotificationhandler.mm
     LIBS += -framework Foundation -framework ApplicationServices -framework AppKit -framework CoreServices \
-        $$BDB_LIB_PATH/libdb_cxx.a \
-        $$BOOST_LIB_PATH/libboost_system-mt.a \
-        $$BOOST_LIB_PATH/libboost_filesystem-mt.a \
-        $$BOOST_LIB_PATH/libboost_program_options-mt.a \
-        $$BOOST_LIB_PATH/libboost_thread-mt.a \
-        $$BOOST_LIB_PATH/libboost_chrono-mt.a
+        /opt/local/lib/db51/libdb_cxx.a \
+        /opt/local/lib/libboost_atomic-mt.a \
+        /opt/local/lib/libboost_system-mt.a \
+        /opt/local/lib/libboost_filesystem-mt.a \
+        /opt/local/lib/libboost_program_options-mt.a \
+        /opt/local/lib/libboost_thread-mt.a \
+        /opt/local/lib/libboost_chrono-mt.a
     DEFINES += MAC_OSX
     ICON = src/mac/artwork/Amigacoin.icns
     QMAKE_INFO_PLIST=src/mac/Info.plist
@@ -159,7 +169,7 @@ LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
         QMAKE_RANLIB = $$replace(QMAKE_STRIP, strip, ranlib)
     }
     LIBS += -lshlwapi
-    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libleveldb.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libmemenv.a
+    #genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libleveldb.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libmemenv.a
 }
 genleveldb.target = $$PWD/src/leveldb/libleveldb.a
 genleveldb.depends = FORCE
@@ -415,7 +425,7 @@ OTHER_FILES += README.md \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt.a
-    win32:BOOST_LIB_SUFFIX = -mgw44-mt-s-1_50
+    win32:BOOST_LIB_SUFFIX = -mgw48-mt-s-1_55
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {

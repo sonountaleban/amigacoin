@@ -17,13 +17,9 @@ ifeq ($(DEPSDIR),)
 endif
 
 
-INCLUDEPATHS= \
- -I"$(CURDIR)" \
- -I"$(CURDIR)"/obj \
- -I"$(DEPSDIR)/include" 
+INCLUDEPATHS= -I"$(CURDIR)" -I"$(CURDIR)"/obj -I"$(DEPSDIR)/include" -I/opt/local/include -I/opt/local/include/db51
 
-LIBPATHS= \
- -L"$(DEPSDIR)/lib" 
+LIBPATHS= -L"$(DEPSDIR)/lib" -L/opt/local/lib/db51 
 
 USE_UPNP:=1
 USE_IPV6:=1

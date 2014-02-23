@@ -1,4 +1,5 @@
 Copyright (c) 2009-2013 Bitcoin Developers
+Copyright (c) 2014 Amigacoin Developers
 
 Distributed under the MIT/X11 software license, see the accompanying
 file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -12,9 +13,9 @@ To Build
 ---------------------
 
 	cd src/
-	make -f makefile.unix		# Headless litecoin
+	make -f makefile.unix		# Headless amigacoin
 
-See readme-qt.rst for instructions on building Litecoin-Qt, the graphical user interface.
+See readme-qt.rst for instructions on building Amigacoin-Qt, the graphical user interface.
 
 Dependencies
 ---------------------
@@ -22,7 +23,7 @@ Dependencies
  Library     Purpose           Description
  -------     -------           -----------
  libssl      SSL Support       Secure communications
- libdb4.8    Berkeley DB       Blockchain & wallet storage
+ libdb5.1    Berkeley DB       Blockchain & wallet storage
  libboost    Boost             C++ Library
  miniupnpc   UPnP Support      Optional firewall-jumping support
 
@@ -45,10 +46,10 @@ Licenses of statically linked libraries:
  miniupnpc     New (3-clause) BSD license
 
 - Versions used in this release:
--  GCC           4.3.3
--  OpenSSL       1.0.1c
--  Berkeley DB   4.8.30.NC
--  Boost         1.37
+-  GCC           4.8.1
+-  OpenSSL       1.0.1e
+-  Berkeley DB   5.1.29.NC
+-  Boost         1.53
 -  miniupnpc     1.6
 
 Dependency Build Instructions: Ubuntu & Debian
@@ -62,17 +63,16 @@ for Ubuntu 12.04:
 
 	sudo apt-get install libboost-all-dev
 
- db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
+ db5.1 packages are available [here](http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/downloads/index-082944.html).
 
  Ubuntu precise has packages for libdb5.1-dev and libdb5.1++-dev,
  but using these will break binary wallet compatibility, and is not recommended.
 
 for other Ubuntu & Debian:
 
-	sudo apt-get install libdb4.8-dev
-	sudo apt-get install libdb4.8++-dev
-	sudo apt-get install libboost1.37-dev
- (If using Boost 1.37, append -mt to the boost libraries in the makefile)
+	sudo apt-get install libdb5.1-dev
+	sudo apt-get install libdb5.1++-dev
+	sudo apt-get install libboost1.53-dev
 
 Optional:
 
@@ -81,7 +81,7 @@ Optional:
 
 Notes
 -----
-The release is built with GCC and then "strip bitcoind" to strip the debug
+The release is built with GCC and then "strip amigacoind" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -96,7 +96,7 @@ miniupnpc
 
 Berkeley DB
 -----------
-You need Berkeley DB 4.8.  If you have to build Berkeley DB yourself:
+You need Berkeley DB 5.1.  If you have to build Berkeley DB yourself:
 
 	../dist/configure --enable-cxx
 	make
@@ -113,7 +113,7 @@ If you need to build Boost yourself:
 
 Security
 --------
-To help make your litecoin installation more secure by making certain attacks impossible to
+To help make your amigacoin installation more secure by making certain attacks impossible to
 exploit even if a vulnerability is found, you can take the following measures:
 
 * Position Independent Executable
@@ -131,7 +131,7 @@ exploit even if a vulnerability is found, you can take the following measures:
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
 
-    	scanelf -e ./litecoin
+    	scanelf -e ./amigacoin
 
     The output should contain:
      TYPE
@@ -139,13 +139,13 @@ exploit even if a vulnerability is found, you can take the following measures:
 
 * Non-executable Stack
     If the stack is executable then trivial stack based buffer overflow exploits are possible if
-    vulnerable buffers are found. By default, bitcoin should be built with a non-executable stack
+    vulnerable buffers are found. By default, amigacoin should be built with a non-executable stack
     but if one of the libraries it uses asks for an executable stack or someone makes a mistake
     and uses a compiler extension which requires an executable stack, it will silently build an
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:
-    `scanelf -e ./litecoin`
+    `scanelf -e ./amigacoin`
 
     the output should contain:
 	STK/REL/PTL

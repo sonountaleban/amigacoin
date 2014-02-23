@@ -1,11 +1,13 @@
 Copyright (c) 2009-2013 Bitcoin Developers
+Copyright (c) 2014 Amigacoin Developers
+
 Distributed under the MIT/X11 software license, see the accompanying
 file COPYING or http://www.opensource.org/licenses/mit-license.php.
 This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](http://www.openssl.org/). This product includes
 cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)), and UPnP software written by Thomas Bernard.
 
 
-See readme-qt.rst for instructions on building Litecoin-Qt, the
+See readme-qt.rst for instructions on building Amigacoin-Qt, the
 graphical user interface.
 
 WINDOWS BUILD NOTES
@@ -22,10 +24,10 @@ Dependencies
 Libraries you need to download separately and build:
 
                 default path               download
-OpenSSL         \openssl-1.0.1c-mgw        http://www.openssl.org/source/
-Berkeley DB     \db-4.8.30.NC-mgw          http://www.oracle.com/technology/software/products/berkeley-db/index.html
-Boost           \boost-1.50.0-mgw          http://www.boost.org/users/download/
-miniupnpc       \miniupnpc-1.6-mgw         http://miniupnp.tuxfamily.org/files/
+OpenSSL         \openssl-1.0.1f-mgw        http://www.openssl.org/source/
+Berkeley DB     \db-5.1.29.NC-mgw          http://www.oracle.com/technology/software/products/berkeley-db/index.html
+Boost           \boost-1.55.0-mgw          http://www.boost.org/users/download/
+miniupnpc       \miniupnpc-1.9-mgw         http://miniupnp.tuxfamily.org/files/
 
 Their licenses:
 
@@ -36,10 +38,10 @@ Their licenses:
 
 Versions used in this release:
 
-	OpenSSL      1.0.1c
-	Berkeley DB  4.8.30.NC
-	Boost        1.50.0
-	miniupnpc    1.6
+	OpenSSL      1.0.1f
+	Berkeley DB  5.1.29.NC
+	Boost        1.55.0
+	miniupnpc    1.9
 
 
 OpenSSL
@@ -49,7 +51,7 @@ MSYS shell:
 un-tar sources with MSYS 'tar xfz' to avoid issue with symlinks (OpenSSL ticket 2377)
 change 'MAKE' env. variable from 'C:\MinGW32\bin\mingw32-make.exe' to '/c/MinGW32/bin/mingw32-make.exe'
 
-	cd /c/openssl-1.0.1c-mgw
+	cd /c/openssl-1.0.1f
 	./config
 	make
 
@@ -57,17 +59,17 @@ Berkeley DB
 -----------
 MSYS shell:
 
-	cd /c/db-4.8.30.NC-mgw/build_unix
-	sh ../dist/configure --enable-mingw --enable-cxx
+	cd /c/db-5.1.29.NC/build_unix
+	sh ../dist/configure --disable-replication --enable-mingw --enable-cxx
 	make
 
 Boost
 -----
 DOS prompt:
 
-	downloaded boost jam 3.1.18
-	cd \boost-1.50.0-mgw
-	bjam toolset=gcc --build-type=complete stage
+	cd \boost_1_55_0
+	bootstrap.bat mingw
+	b2 --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc stage
 
 MiniUPnPc
 ---------
@@ -75,15 +77,23 @@ UPnP support is optional, make with `USE_UPNP=` to disable it.
 
 MSYS shell:
 
-	cd /c/miniupnpc-1.6-mgw
+	cd /c/miniupnpc
 	make -f Makefile.mingw
 	mkdir miniupnpc
 	cp *.h miniupnpc/
 
-Litecoin
+leveldb
 -------
+MSYS shell:
+
+	cd /amigacoin/src/leveldb/
+	export TARGET_OS=NATIVE_WINDOWS
+	make libleveldb.a libmemenv.a
+
+Amigacoin
+---------
 DOS prompt:
 
-	cd \litecoin\src
+	cd \amigacoin\src
 	mingw32-make -f makefile.mingw
-	strip litecoind.exe
+	strip amigacoind.exe

@@ -1,4 +1,4 @@
-Amigacoin 0.8.x BETA
+Amigacoin 1.0.0
 ====================
 
 Copyright (c) 2009-2013 Bitcoin Developers
@@ -22,18 +22,7 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 ---------------------
-You need the Qt4 run-time libraries to run Amigacoin-Qt. On Debian or Ubuntu:
-        `sudo apt-get install libqtgui4`
-
-Unpack the files into a directory and run:
-
-- bin/32/Amigacoin-qt (GUI, 32-bit)
-- bin/32/Amigacoind (headless, 32-bit)
-- bin/64/Amigacoin-qt (GUI, 64-bit)
-- bin/64/Amigacoind (headless, 64-bit)
-
-See the documentation at (http://www.amigacoin.org)
-for help and more information.
+See the documentation at (http://www.amigacoin.org) and doc folder for help and more information.
                                                                                                                                                                            
                                                                                                                                                                            
 Other Pages                                                                                                                                                                

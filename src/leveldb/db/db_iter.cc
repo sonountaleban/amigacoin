@@ -104,7 +104,7 @@ class DBIter: public Iterator {
   }
 
   // Pick next gap with average value of config::kReadBytesPeriod.
-  ssize_t RandomPeriod() {
+  size_t RandomPeriod() {
     return rnd_.Uniform(2*config::kReadBytesPeriod);
   }
 
@@ -120,7 +120,7 @@ class DBIter: public Iterator {
   bool valid_;
 
   Random rnd_;
-  ssize_t bytes_counter_;
+  size_t bytes_counter_;
 
   // No copying allowed
   DBIter(const DBIter&);
@@ -129,7 +129,7 @@ class DBIter: public Iterator {
 
 inline bool DBIter::ParseKey(ParsedInternalKey* ikey) {
   Slice k = iter_->key();
-  ssize_t n = k.size() + iter_->value().size();
+  size_t n = k.size() + iter_->value().size();
   bytes_counter_ -= n;
   while (bytes_counter_ < 0) {
     bytes_counter_ += RandomPeriod();

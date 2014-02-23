@@ -1,4 +1,4 @@
-Litecoin-Qt: Qt4 GUI for Litecoin
+Amigacoin-Qt: Qt4 GUI for Amigacoin
 ===============================
 
 Build instructions
@@ -18,7 +18,7 @@ for Debian and Ubuntu  <= 11.10 :
 
     apt-get install qt4-qmake libqt4-dev build-essential libboost-dev libboost-system-dev \
         libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
-        libssl-dev libdb4.8++-dev
+        libssl-dev libdb5.1++-dev
 
 for Ubuntu >= 12.04 (please read the 'Berkely DB version warning' below):
 
@@ -59,14 +59,14 @@ Mac OS X
 ::
 
   sudo port selfupdate
-  sudo port install boost db48 miniupnpc
+  sudo port install boost db51 miniupnpc
 
 - Execute the following commands in a terminal to get the dependencies using HomeBrew:
 
 ::
 
   brew update
-  brew install boost miniupnpc openssl berkeley-db4
+  brew install boost miniupnpc openssl berkeley-db5
 
 - If using HomeBrew,  edit `amigacoin-qt.pro` to account for library location differences. There's a diff in `contrib/homebrew/bitcoin-qt-pro.patch` that shows what you need to change, or you can just patch by doing
 
@@ -133,24 +133,20 @@ flag to qmake to control this:
 Berkely DB version warning
 ==========================
 
-A warning for people using the *static binary* version of Litecoin on a Linux/UNIX-ish system (tl;dr: **Berkely DB databases are not forward compatible**).
+A warning for people using the *static binary* version of Amigacoin on a Linux/UNIX-ish system (tl;dr: **Berkely DB databases are not forward compatible**).
 
-The static binary version of Litecoin is linked against libdb4.8 (see also `this Debian issue`_).
+The static binary version of Amigacoin is linked against libdb5.1 (see also `this Debian issue`_).
 
 Now the nasty thing is that databases from 5.X are not compatible with 4.X.
 
-If the globally installed development package of Berkely DB installed on your system is 5.X, any source you
-build yourself will be linked against that. The first time you run with a 5.X version the database will be upgraded,
-and 4.X cannot open the new format. This means that you cannot go back to the old statically linked version without
-significant hassle!
-
-.. _`this Debian issue`: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=621425
+If the globally installed development package of Berkely DB installed on your system is 4.X, any source you
+build yourself will be linked against that. 
 
 Ubuntu 11.10 warning
 ====================
 
 Ubuntu 11.10 has a package called 'qt-at-spi' installed by default.  At the time of writing, having that package
-installed causes litecoin-qt to crash intermittently.  The issue has been reported as `launchpad bug 857790`_, but
+installed causes amigacoin-qt to crash intermittently.  The issue has been reported as `launchpad bug 857790`_, but
 isn't yet fixed.
 
 Until the bug is fixed, you can remove the qt-at-spi package to work around the problem, though this will presumably

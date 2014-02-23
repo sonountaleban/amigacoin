@@ -19,10 +19,8 @@ for more information or see http://opensource.org/licenses/MIT.
 Developers work in their own trees, then submit pull requests when they think
 their feature or bug fix is ready.
 
-### Building amigacoind on Linux (Ubuntu/Debian)
-sudo apt-get install build-essential libssl-dev libdb5.1++-dev libboost-all-dev libqrencode-dev libminiupnpc-dev
-cd src/
-make -f makefile.unix USE_UPNP=1 USE_IPV6=1 USE_QRCODE=1
+### Building amigacoind and amigacoin-qt
+See documentation in doc folder.
 
 ### Ports
 RPC 22111
