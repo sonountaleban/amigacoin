@@ -4,7 +4,7 @@ http://www.amigacoin.org/
 Support Amiga community, please!
 
 ## What is Amigacoin?
-Amigacoin is a clone of Dogecoin (another open source peer-to-peer Litecoin-derived cryptocurrency).
+Amigacoin is another open source peer-to-peer Litecoin-derived cryptocurrency.
 
  - 2 minute block targets
  - 2 billion total coins

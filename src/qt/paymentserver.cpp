@@ -111,10 +111,10 @@ PaymentServer::PaymentServer(QApplication* parent) : QObject(parent), saveURIs(t
     else
         connect(uriServer, SIGNAL(newConnection()), this, SLOT(handleURIConnection()));
 
-    QDesktopServices::setUrlHandler("amigacoin", this, SLOT(handleDogeURI));
+    QDesktopServices::setUrlHandler("amigacoin", this, SLOT(handleAmigaURI));
 }
 
-void PaymentServer::handleDogeURI(const QUrl &url)
+void PaymentServer::handleAmigaURI(const QUrl &url)
 {
     emit receivedURI(url.toString());
 }

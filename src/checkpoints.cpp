@@ -1,5 +1,4 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2013-2014 Dogecoin Developers
 // Copyright (c) 2014 Amigacoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -39,6 +38,7 @@ namespace Checkpoints
         boost::assign::map_list_of
         (     0, uint256("0xb291ae994f9fd8e39d9cfad7f320e5d203d4160453632ff95c59b168183d35f1"))
         (  4907, uint256("7d56c6eb163c71aaccedc5ccc5ad725e6dd775709dadea89a0998cc1a5578a2f"))
+	( 11975, uint256("2cec53335df3d8b88c192bb91ce70791b722791224c854c905eded46d3dd4ee8"))
         ;
     static const CCheckpointData data = {
         &mapCheckpoints,

@@ -2,7 +2,6 @@
 // Alert system
 //
 
-// Copyright (c) 2013-2014 Dogecoin Developers
 // Copyright (c) 2014 Amigacoin Developers
 
 #include <algorithm>
