@@ -24,7 +24,7 @@ Dependencies
 Libraries you need to download separately and build:
 
                 default path               download
-OpenSSL         \openssl-1.0.1f-mgw        http://www.openssl.org/source/
+OpenSSL         \openssl-1.0.1g-mgw        http://www.openssl.org/source/
 Berkeley DB     \db-5.1.29.NC-mgw          http://www.oracle.com/technology/software/products/berkeley-db/index.html
 Boost           \boost-1.55.0-mgw          http://www.boost.org/users/download/
 miniupnpc       \miniupnpc-1.9-mgw         http://miniupnp.tuxfamily.org/files/
@@ -38,7 +38,7 @@ Their licenses:
 
 Versions used in this release:
 
-	OpenSSL      1.0.1f
+        OpenSSL      1.0.1g
 	Berkeley DB  5.1.29.NC
 	Boost        1.55.0
 	miniupnpc    1.9
@@ -51,7 +51,7 @@ MSYS shell:
 un-tar sources with MSYS 'tar xfz' to avoid issue with symlinks (OpenSSL ticket 2377)
 change 'MAKE' env. variable from 'C:\MinGW32\bin\mingw32-make.exe' to '/c/MinGW32/bin/mingw32-make.exe'
 
-	cd /c/openssl-1.0.1f
+        cd /c/openssl-1.0.1g
 	./config
 	make
 

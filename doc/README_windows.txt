@@ -1,4 +1,4 @@
-Amigacoin 1.0.0
+Amigacoin 1.0.1
 
 Copyright (c) 2009-2013 Bitcoin Developers
 Copyright (c) 2011-2013 Litecoin Developers
