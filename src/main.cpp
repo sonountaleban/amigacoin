@@ -1100,8 +1100,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 2 * 24 * 60 * 60; // AmigaCoin: 2 days
-static const int64 nTargetSpacing = 2 * 60; // AmigaCoin: 2 minutes
+static const int64 nTargetTimespan = 2 * 60 * 60; // 2 hours
+static const int64 nTargetSpacing = 60; // 60 seconds
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 //
@@ -1175,7 +1175,23 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     // Limit adjustment step
     int64 nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
     printf("  nActualTimespan = %"PRI64d"  before bounds\n", nActualTimespan);
-    if(pindexLast->nHeight+1 > 10000)
+    if(pindexLast->nHeight+1 > 535020)
+    {
+    	// From Digibyte to implement Digishield
+        static const int64 nAveragingInterval = 10; // 10 blocks
+        static const int64 nAveragingTargetTimespan = nAveragingInterval * nTargetSpacing; // *10        
+        static const int64 nMaxAdjustDown = 16; // 16% adjustment down
+        static const int64 nMaxAdjustUp = 8; // adjustment up
+        
+        static const int64 nMinActualTimespan = nAveragingTargetTimespan * (100 - nMaxAdjustUp) / 100;
+        static const int64 nMaxActualTimespan = nAveragingTargetTimespan * (100 + nMaxAdjustDown) / 100;
+        
+        if (nActualTimespan < nMinActualTimespan)
+            nActualTimespan = nMinActualTimespan;
+        if (nActualTimespan > nMaxActualTimespan)
+            nActualTimespan = nMaxActualTimespan;
+    }
+    else if(pindexLast->nHeight+1 > 10000)
     {
         if (nActualTimespan < nTargetTimespan/4)
             nActualTimespan = nTargetTimespan/4;
@@ -1191,7 +1207,7 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     }
     else
     {
-        if (nActualTimespan < nTargetTimespan/16)
+    	if (nActualTimespan < nTargetTimespan/16)
             nActualTimespan = nTargetTimespan/16;
         if (nActualTimespan > nTargetTimespan*4)
             nActualTimespan = nTargetTimespan*4;

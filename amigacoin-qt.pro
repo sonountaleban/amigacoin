@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = amigacoin-qt
 macx:TARGET = "Amigacoin-Qt"
-VERSION = 1.0.1
+VERSION = 1.0.2
 win32 {
     INCLUDEPATH += src src/json src/qt src/boost_1_55_0 src/openssl-1.0.1g/include src/db-5.1.29.NC/build_unix
 }
